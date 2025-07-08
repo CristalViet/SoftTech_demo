@@ -1,48 +1,183 @@
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
+import { LoginModal } from "../componennts/login";
+import { Link } from "react-router";
+import { useNavigate } from "react-router";
+import { useState } from "react";
 
 export function Welcome() {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  
+  const openLoginModal = () => {
+    setIsLoginModalOpen(true);
+  }
+  
+  const closeLoginModal = () => {
+    setIsLoginModalOpen(false);
+  }
+
   return (
-    <main className="flex items-center justify-center pt-16 pb-4">
-      <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
-        <header className="flex flex-col items-center gap-9">
-          <div className="w-[500px] max-w-[100vw] p-4">
-            <img
-              src={logoLight}
-              alt="React Router"
-              className="block w-full dark:hidden"
-            />
-            <img
-              src={logoDark}
-              alt="React Router"
-              className="hidden w-full dark:block"
-            />
-          </div>
-        </header>
-        <div className="max-w-[300px] w-full space-y-6 px-4">
-          <nav className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4">
-            <p className="leading-6 text-gray-700 dark:text-gray-200 text-center">
-              What&apos;s next?
-            </p>
-            <ul>
-              {resources.map(({ href, text, icon }) => (
-                <li key={href}>
-                  <a
-                    className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {icon}
-                    {text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+    <>
+    <div className="bg-gray-50">
+      <nav className=" justify-between bg-white w-full p-4 border-b border-gray-100 text-black h-16 fixed top-0 left-0 z-10">
+        <div className="flex w-[60%] mx-auto justify-between items-center">
+          <img src="/sachso_logo.ea7f2393.png" alt="logo" className="w-30 h-10" />
+          <button 
+            onClick={openLoginModal}
+            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+          >
+            Đăng nhập
+          </button>
+          <Link to="/signup">Trang chủ</Link>
+          <Link to="/dashboard">Phương Nam</Link>
+          <Link to="/dashboard">Đăng ký học sinh</Link>
         </div>
-      </div>
-    </main>
+
+      </nav>
+       
+       <div className="flex w-[80%] mx-auto justify-center items-center pt-16 ">
+           <div className="grid grid-cols-2 gap-8 w-full">
+             <div className="flex justify-center items-center">
+                  <img src="/sachso_logo.ea7f2393.png" alt="logo" className="w-64 h-32 object-contain" />
+             </div>
+             <div className=" items-center pt-12">
+              <h1 className="text-4xl font-bold text-blue-700">SÁCH GIÁO KHOA TIẾNG ANH
+              </h1>
+               <p className="  text-gray-800">Áp dụng phương pháp học tập khoa học mới hệ thống học trực tuyến thông minh, ứng dụng công nghệ 4.0 với trí tuệ nhân tạo. Việc áp dụng phương pháp mới này không những mang lại hiệu quả cao, tiết kiệm thời gian mà còn mang đến tính sáng tạo, tư duy độc lập, sự tìm tòi, nghiên cứu của học sinh.</p>
+             </div>
+             
+           </div>
+
+       </div>
+       <div className="w-[80%] mx-auto justify-center items-center bg-gray-50 pt-16">
+          <div className="text-blue-400 font-bold text-2xl mb-4 text-center">Tính năng nổi bật</div>
+          <div className="grid grid-cols-3 gap-8 w-full">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center relative pt-20 mt-8 border-2 border-gray-200">
+              <div className="flex justify-center mb-4 border-radius-full  absolute left-1/2 transform -translate-x-1/2 -top-8">
+                <img src="/ai.57721735.svg" alt="AI icon" className="w-20 h-20" />
+              </div>
+
+              <div className="mb-4">
+              <h2 className="text-xl font-semibold mb-2">Tính năng AI</h2>
+              <p className="text-gray-600 text-left">Việc tích hợp hệ thống AI chấm điểm giúp hạn chế việc lấy đi một khoảng thời gian đáng kể trong khi thời gian đó có thể được sử dụng để trao đổi với học sinh, chuẩn bị trang bị lớp học hay các công việc khác phục vụ thiết yếu phục vụ cho công tác dạy và học.</p>
+     
+              </div>
+                    {/* thẻ label */}
+            
+              <div className="flex mt-4">
+                  <div className="bg-blue-500 text-white px-2 py-1 rounded-3xl text-xs mx-2">
+                    Các bài tập trắc nghiệm
+                  </div>
+                  <div className="bg-blue-500 text-white px-2 py-1 rounded-3xl text-xs mx-2">
+                    Luyện tập với AI
+                  </div>  
+              </div>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md text-center relative pt-20 mt-8 border-2 border-gray-200">
+              <div className="flex justify-center mb-4 border-radius-full absolute left-1/2 transform -translate-x-1/2 -top-8">
+                <img src="/anh2.png" alt="" className="w-20 h-20" />
+              </div>
+              
+              <div>
+              <h2 className="text-xl font-semibold mb-2">Giáo viên quản lý học sinh</h2>
+              <p className="text-gray-600 text-left">Xây dựng hệ thống quản lý lớp học từ xa. Là nơi giáo viên có thể chủ động theo dõi việc học và làm bài của học sinh từ đó giúp giáo viên có thể quản lý lớp một cách bao quát hơn. Bên cạnh đó luôn đòi hỏi học sinh làm việc khẩn trương theo đúng lộ trình giáo viên đã đặt ra.</p>
+              </div>
+                 
+                 {/* thẻ label */}
+            
+              <div className="flex mt-4">
+                <div className="bg-blue-500 text-white px-2 py-1 rounded-3xl text-xs mx-2">
+                  Quản lý học sinh
+                </div>
+                <div className="bg-blue-500 text-white px-2 py-1 rounded-3xl text-xs mx-2">
+                  Quản lý lớp học
+                </div>  
+              </div>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md text-center relative pt-20 mt-8 border-2 border-gray-200">
+              <div className="flex justify-center mb-4 border-radius-full absolute left-1/2 transform -translate-x-1/2 -top-8">
+                <img src="/phuhuynh.png" alt="" className="w-20 h-20" />
+              </div>
+              <div>
+              <h2 className="text-xl font-semibold mb-2">Tính năng Premium</h2>
+              <p className="text-gray-600 text-left">Nhu cầu theo dõi việc học tập của con cái đối với phụ huynh là một nhu cầu hàng đầu. Hệ thống được xây dựng với mục đích đáp ứng nhu cầu trên và tạo sự kết nối chặt chẽ hơn giữa phụ huynh học sinh với nhà trường để kịp thời nắm bắt và theo dõi.</p>
+              </div>
+              
+               {/* thẻ label */}
+            
+               <div className="flex mt-4">
+                <div className="bg-blue-500 text-white px-2 py-1 rounded-3xl text-xs mx-2">
+                  Quản lý học sinh
+                </div>
+                <div className="bg-blue-500 text-white px-2 py-1 rounded-3xl text-xs mx-2">
+                  Quản lý lớp học
+                </div>  
+              </div>
+            
+            
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8 w-full p-16">
+            <div className="bg-white p-6 rounded-lg text-center  ">
+              <img src="/Piramid.3db44542.png" alt="" />
+
+            </div>
+            <div className="bg-blue-700 text-white rounded-bl-3xl rounded-tl-3xl p-12">
+              <h1 className="text-4xl font-bold">Phương pháp học tiếng anh dựa theo "Tháp học tập"</h1>
+              <p className="text-left mt-4">
+              Hệ thống bài học được thiết kế công phu, khoa học và hấp dẫn, giúp học viên học sâu qua các chủ đề giao tiếp thông dụng
+              </p>
+              <p className="text-left mt-4">
+              Giúp học viên ghi nhớ lâu những kiến thức được học thông qua trải nghiệm trực tiếp và quá trình lặp đi lặp lại nhiều lần              </p>
+              <p className="text-left mt-4">
+                
+Bằng việc ứng dụng hình ảnh, âm thanh, hành động và cảm xúc vào việc học từ vựng, học viên sẽ ghi nhớ từ vựng lâu hơn, hiệu quả hơn và có hứng thú hơn khi học
+              </p>
+            </div>
+
+          </div>
+
+
+
+          {/* Footer*/}
+          <div className="grid grid-cols-3 gap-8 w-full p-16">  
+            <div> 
+              <img src="nxbgd.png" alt="" className="w-80 h-20"/>
+            </div>
+            <div >
+              <h1>Liên hệ</h1>
+              <p>
+                Địa chỉ: 123 Đường ABC, Quận XYZ, TP. HCM
+              </p>
+              <p>
+                Email: contact@example.com
+              </p>
+            </div>
+
+            <div> 
+              <img src="logofooter.ea7f2393.png" alt="" className="w-80 h-20"/>
+            </div>
+              
+
+          </div>
+      
+
+        {/*Login Modal */}
+        <LoginModal 
+          isOpen={isLoginModalOpen} 
+          onClose={closeLoginModal} 
+        />
+       </div>
+    </div>
+    
+
+
+    
+
+    </>
+
+   
   );
 }
 
